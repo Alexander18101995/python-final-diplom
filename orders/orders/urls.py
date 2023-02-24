@@ -18,12 +18,14 @@ from django.urls import path,include
 
 
 
-from backend.views import RegisterAccount,LoginAccount,ShopView
+from backend.views import RegisterAccount,LoginAccount,ShopView,CategoryView,ProductInfoView
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 
 router.register('shop', ShopView, basename='My')
+router.register('category', CategoryView, basename='My')
+router.register('productinfo', ProductInfoView, basename='My')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

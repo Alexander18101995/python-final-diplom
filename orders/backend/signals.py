@@ -9,3 +9,4 @@ from .models import Shop
 def create_profile(sender, instance, created, **kwargs):
     if created:
         Shop.objects.create(user=instance)
+

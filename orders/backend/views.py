@@ -1,12 +1,16 @@
 from django.contrib.auth.password_validation import validate_password
 from django.http import JsonResponse
 from rest_framework.views import APIView
-from backend.serializers import UserSerializer,ShopSerializer
-from backend.models import Shop
+from backend.serializers import UserSerializer,ShopSerializer,CategorySerializer,ProductInfoSerializer
+from backend.models import Shop,Category,ProductInfo
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
+
+
+
+
 
 class RegisterAccount(APIView):
     """
@@ -63,9 +67,9 @@ class LoginAccount(APIView):
 
                     return JsonResponse({'Status': True, 'Token': token.key})
 
-            return JsonResponse({'Status': False, 'Errors': 'Не удалось авторизовать'})
+            return JsonResponse({'Status': False, 'Errors': 'Ne udalos avtorizovat'})
 
-        return JsonResponse({'Status': False, 'Errors': 'Не указаны все необходимые аргументы'})
+        return JsonResponse({'Status': False, 'Errors': 'Ne ukazany vse argumenty'})
 
 
 
@@ -78,3 +82,14 @@ class ShopView(ModelViewSet):
     def perform_create(self, serializer):
         user = self.request.user
         serializer.save(user=user)
+
+
+class CategoryView(ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
+
+class ProductInfoView(ModelViewSet):
+    queryset = ProductInfo.objects.all()
+    serializer_class = ProductInfoSerializer
+    permission_classes = [IsAuthenticated]

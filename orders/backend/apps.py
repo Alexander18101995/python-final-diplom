@@ -6,3 +6,5 @@ class BackendConfig(AppConfig):
 
     def ready(self):
         create_profile
+
+
