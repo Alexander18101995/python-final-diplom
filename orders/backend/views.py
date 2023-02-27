@@ -9,7 +9,3 @@ class ShopView(ModelViewSet):
     queryset = Shop.objects.all()
     serializer_class = ShopSerializer
     permission_classes = [IsAuthenticated]
-
-    def permorm_create(self,serializer):
-        serializer.save(user=self.request.user)
-
