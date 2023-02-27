@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'backend',
+    'django_rest_passwordreset',
 
 ]
 
@@ -80,8 +81,12 @@ WSGI_APPLICATION = 'orders.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'diplom_db',
+        'USER': 'postgres',
+        'PASSWORD': '9785',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -116,7 +121,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -129,11 +134,11 @@ AUTH_USER_MODEL = 'backend.User'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_USE_TLS = True
 
-EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_HOST_USER = 'netology-pdiplom@mail.ru'
-EMAIL_HOST_PASSWORD = 'i~8W4rdRPFlo'
-EMAIL_PORT = '465'
-EMAIL_USE_SSL = True
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'alekud18@yandex.ru'
+EMAIL_HOST_PASSWORD = 'xghqixccqjpcglmx'
 SERVER_EMAIL = EMAIL_HOST_USER
 
 REST_FRAMEWORK = {
